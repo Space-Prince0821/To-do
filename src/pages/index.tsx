@@ -1,9 +1,8 @@
 import Head from "next/head";
-import Link from "next/link";
-import { api } from "~/utils/api";
+import CreateTodo from "~/components/CreateTodo";
+import { Todos } from "~/components/Todos";
 
 export default function Home() {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
   return (
     <>
@@ -13,7 +12,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center bg-white">
-        
+        <Todos />
+        <CreateTodo />
       </main>
     </>
   );

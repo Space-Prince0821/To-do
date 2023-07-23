@@ -5,7 +5,7 @@ export const todosRouter = createTRPCRouter({
   getAll: protectedProcedure.query(async ({ ctx }) => {
     const todos = await ctx.prisma.todo.findMany({
         where: {
-            userId: ctx.auth.userId
+          userId: ctx.auth.userId
         }
     })
 
@@ -17,8 +17,8 @@ export const todosRouter = createTRPCRouter({
     .mutation(async ({ input, ctx }) => {
         const todo = await ctx.prisma.todo.create({
             data: {
-                ...input, 
-                userId: ctx.auth.userId
+              ...input, 
+              userId: ctx.auth.userId
             }
         });
 
@@ -30,7 +30,7 @@ export const todosRouter = createTRPCRouter({
       .mutation(async ({ ctx, input }) => {
         return ctx.prisma.todo.delete({
             where: {
-                id: input
+              id: input
             }
         });
       }),
@@ -40,10 +40,10 @@ export const todosRouter = createTRPCRouter({
       .mutation(async ({ ctx, input }) => {
         return ctx.prisma.todo.update({
             where: {
-                id: input.id
+              id: input.id
             },
             data: {
-                done: input.done
+              done: input.done
             }
         });
       }),
