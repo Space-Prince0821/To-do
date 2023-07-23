@@ -1,11 +1,6 @@
 import { useState } from "react";
 import { api } from "~/utils/api";
 
-interface TodoForm {
-    title: string;
-    content: string;
-}
-
 export default function CreateTodo() {
     const [newTodoTitle, setNewTodoTitle] = useState<string>('');
     const [newTodoContent, setNewTodoContent] = useState<string>('');
