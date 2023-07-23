@@ -1,11 +1,25 @@
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 import { api } from "~/utils/api";
 
 export default function CreateTodo() {
     const [newTodoTitle, setNewTodoTitle] = useState<string>('');
     const [newTodoContent, setNewTodoContent] = useState<string>('');
+    const ctx = api.useContext();
 
-    const { mutate } = api.todos.create.useMutation();
+    const { mutate, isLoading: isCreating } = api.todos.create.useMutation({
+        onSuccess: () => {
+            setNewTodoTitle("");
+            setNewTodoContent("");
+            // get up to date data in todos (context) from cached trpc 
+            // invalidate the getAll query, since it is uneccassary
+            // since the new todo is already cached
+            void ctx.todos.getAll.invalidate();
+        },
+        onError: () => {
+            toast.error("Failed to create!");
+        }
+    });
  
     return (
         <div className="mt-5">
@@ -20,6 +34,7 @@ export default function CreateTodo() {
                     onChange={(e) => {
                         setNewTodoTitle(e.target.value)
                     }}
+                    disabled={isCreating}
                 />
 
                 <textarea
@@ -29,6 +44,7 @@ export default function CreateTodo() {
                     onChange={(e) => {
                         setNewTodoContent(e.target.value)
                     }}
+                    disabled={isCreating}
                 />
 
                 <button 

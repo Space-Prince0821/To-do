@@ -11,9 +11,9 @@ export default function Home() {
         <meta name="description" content="To do list tracker" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-white">
-        <Todos />
+      <main className="flex gap-2 min-h-screen flex-col items-center bg-white">
         <CreateTodo />
+        <Todos />
       </main>
     </>
   );
