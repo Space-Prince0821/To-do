@@ -1,3 +1,4 @@
+import router from "next/router";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { api } from "~/utils/api";
@@ -14,6 +15,7 @@ export default function CreateTodo() {
             // get up to date data in todos (context) from cached trpc 
             // invalidate the getAll query, since it is uneccassary
             // since the new todo is already cached
+            void router.push('/');
             void ctx.todos.getAll.invalidate();
         },
         onError: () => {
