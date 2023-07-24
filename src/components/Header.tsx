@@ -22,7 +22,7 @@ export const Header = () => {
                         {user.isSignedIn ? 
                             <>
                                 <li className="cursor-pointer text-white hover:text-blue-500">
-                                    <Link href="/create">
+                                    <Link href="/createPage">
                                         Create
                                     </Link>
                                 </li>

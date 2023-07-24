@@ -22,13 +22,14 @@ export default function CreateTodo() {
     });
  
     return (
-        <div className="mt-5">
+        <div className="">
             <form 
                 onSubmit={() => mutate({ title: newTodoTitle, content: newTodoContent })}
-                className="flex flex-col gap-4 border-2 border-slate-300 rounded-lg px-2 py-2"
+                className="flex flex-col gap-4 border-2 border-slate-300 rounded-lg px-2 py-2 h-96 w-80 items-center justify-center shadow-lg"
             >
+                <h1 className="text-2xl font-medium italic">Create To Do</h1>
                 <input
-                    className="pl-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg px-4 py-2"
+                    className="pl-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg px-4 py-2 w-[250px]"
                     placeholder="Title"
                     type="text" name="title" id="title" value={newTodoTitle}
                     onChange={(e) => {
@@ -38,7 +39,7 @@ export default function CreateTodo() {
                 />
 
                 <textarea
-                    className="pl-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg px-4 py-2"
+                    className="pl-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg px-4 py-2 w-[250px]"
                     placeholder="Content"
                     name="content" id="content" value={newTodoContent}
                     onChange={(e) => {
