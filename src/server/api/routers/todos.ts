@@ -13,11 +13,12 @@ export const todosRouter = createTRPCRouter({
   }),
 
   create: protectedProcedure
-    .input(z.object({ title: z.string(), content: z.string() }))
+    .input(z.object({ title: z.string().min(1), content: z.string().min(1) }))
     .mutation(async ({ input, ctx }) => {
         const todo = await ctx.prisma.todo.create({
             data: {
-              ...input, 
+              title: input.title,
+              content: input.content, 
               userId: ctx.auth.userId
             }
         });

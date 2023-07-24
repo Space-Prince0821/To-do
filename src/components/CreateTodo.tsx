@@ -23,8 +23,7 @@ export default function CreateTodo() {
  
     return (
         <div className="">
-            <form 
-                onSubmit={() => mutate({ title: newTodoTitle, content: newTodoContent })}
+            <div
                 className="flex flex-col gap-4 border-2 border-slate-300 rounded-lg px-2 py-2 h-96 w-80 items-center justify-center shadow-lg"
             >
                 <h1 className="text-2xl font-medium italic">Create To Do</h1>
@@ -51,10 +50,11 @@ export default function CreateTodo() {
                 <button 
                     type="submit"
                     className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none rounded-lg px-4 py-2"
+                    onClick={() => mutate({ title: newTodoTitle, content: newTodoContent })}
                 >
                     Create
                 </button>
-            </form>
+            </div>
         </div>
     )
 }
